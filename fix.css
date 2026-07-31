@@ -66,6 +66,24 @@
 .gallery-item img{animation:gallery-drift 16s ease-in-out infinite alternate}
 .gallery-item:nth-child(2) img{animation-delay:-5s}.gallery-item:nth-child(3) img{animation-delay:-9s}.gallery-item:nth-child(4) img{animation-delay:-12s}.gallery-item:nth-child(5) img{animation-delay:-3s}
 
+/* Hospitality decision sections */
+.guest-fit-section,.stay-guide-section{padding-top:118px;padding-bottom:118px}
+.guest-fit-heading{display:grid;grid-template-columns:1.1fr .9fr;gap:80px;align-items:end}
+.guest-fit-heading h2,.stay-guide-copy h2,.reviews-panel h2{font-size:45px;margin:19px 0 34px}
+.guest-fit-heading p,.stay-guide-copy p{max-width:420px;margin:0 0 38px;color:var(--muted);line-height:1.8}
+.guest-fit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:48px}
+.guest-fit-grid article,.stay-guide-grid article{padding:25px;border:1px solid var(--line);border-radius:16px;background:rgba(255,255,255,.3);box-shadow:inset 0 1px 0 rgba(255,255,255,.55);transition:transform .25s ease,box-shadow .25s ease}
+.guest-fit-grid article:hover,.stay-guide-grid article:hover{transform:translateY(-4px);box-shadow:0 18px 35px rgba(23,63,58,.1),inset 0 1px 0 rgba(255,255,255,.7)}
+.guest-fit-grid span,.guide-number{display:block;color:var(--coral);font-size:11px;letter-spacing:.14em;font-weight:700}
+.guest-fit-grid h3,.stay-guide-grid h3{font:600 21px 'Playfair Display',serif;margin:32px 0 10px;color:var(--ink)}
+.guest-fit-grid p,.stay-guide-grid p{color:var(--muted);font-size:13px;line-height:1.7;margin:0}
+.stay-guide-section{display:grid;grid-template-columns:.82fr 1.18fr;gap:72px;background:linear-gradient(135deg,rgba(232,223,209,.74),rgba(255,255,255,.36));border-top:1px solid rgba(23,63,58,.09);border-bottom:1px solid rgba(23,63,58,.09)}
+.stay-guide-copy{padding-left:28px}.stay-guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding-right:28px}.stay-guide-grid article{min-height:190px;background:rgba(255,255,255,.54);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+.reviews-section{padding-top:110px;padding-bottom:0}.reviews-panel{display:grid;grid-template-columns:1fr .8fr;gap:60px;align-items:center;background:var(--ink);border-radius:22px;padding:58px 66px;color:#fff;box-shadow:0 24px 48px rgba(23,63,58,.18)}
+.reviews-panel h2{color:#fff;margin-bottom:14px}.reviews-panel p{color:#d2ded8;max-width:390px;line-height:1.75}.review-score{justify-self:end;display:flex;flex-direction:column;align-items:flex-start}.review-score strong{font:600 74px/.85 'Playfair Display',serif}.review-score>span{color:#f4c75c;font-size:20px;letter-spacing:3px;margin:14px 0 5px}.review-score small{color:#c4d2ca;font-size:12px}.review-link{display:inline-flex;margin-top:25px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.3)}
+.whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:8;display:inline-flex;align-items:center;gap:9px;background:rgba(23,63,58,.9);color:#fff;padding:13px 17px;border:1px solid rgba(255,255,255,.27);border-radius:999px;font-size:12px;font-weight:700;box-shadow:0 14px 32px rgba(23,63,58,.25);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+.whatsapp-float span{color:#f0ad98}
+
 @keyframes hero-float{50%{transform:translateY(-8px)}}
 @keyframes hero-drift{from{transform:scale(1.02) translate3d(-.5%,0,0)}to{transform:scale(1.08) translate3d(.8%,-1%,0)}}
 @keyframes gallery-drift{from{transform:scale(1.02) translate3d(-.4%,0,0)}to{transform:scale(1.08) translate3d(.7%,-.8%,0)}}
@@ -79,4 +97,5 @@
   .site-header{background:rgba(245,241,233,.9)}
   .hero-visual{box-shadow:0 20px 42px rgba(23,63,58,.13)}
   .gallery-item span{left:8px;bottom:8px;padding:6px 9px;font-size:11px}
+  .guest-fit-section,.stay-guide-section{padding-top:76px;padding-bottom:76px}.guest-fit-heading,.stay-guide-section,.reviews-panel{grid-template-columns:1fr;gap:32px}.guest-fit-heading h2,.stay-guide-copy h2,.reviews-panel h2{font-size:38px}.guest-fit-grid,.stay-guide-grid{grid-template-columns:1fr;gap:10px;margin-top:32px}.stay-guide-copy,.stay-guide-grid{padding-left:28px;padding-right:28px}.stay-guide-grid article{min-height:auto}.reviews-section{padding-top:76px}.reviews-panel{padding:42px 28px;border-radius:16px}.review-score{justify-self:start}.review-score strong{font-size:62px}.whatsapp-float{right:14px;bottom:14px}
 }

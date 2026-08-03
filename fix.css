@@ -11,7 +11,13 @@
   box-shadow:0 10px 30px rgba(23,63,58,.06);
   -webkit-backdrop-filter:blur(18px) saturate(130%);
   backdrop-filter:blur(18px) saturate(130%);
+  transition:height .32s ease,background .32s ease,box-shadow .32s ease;
 }
+
+.site-header.is-scrolled{height:70px;background:rgba(245,241,233,.9);box-shadow:0 12px 32px rgba(23,63,58,.1)}
+.nav-links a:not(.nav-cta){position:relative;transition:color .22s ease}
+.nav-links a:not(.nav-cta):after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:1px;background:var(--coral);transform:scaleX(0);transform-origin:left;transition:transform .22s ease}
+.nav-links a:not(.nav-cta).is-active:after{transform:scaleX(1)}
 
 .nav-cta,
 .button-dark{
@@ -27,6 +33,7 @@
   border:1px solid rgba(255,255,255,.7);
   box-shadow:0 28px 60px rgba(23,63,58,.14),inset 0 1px 0 rgba(255,255,255,.5);
   animation:hero-float 7s ease-in-out infinite;
+  transition:translate .18s linear;
 }
 
 .hero-visual img{
@@ -84,13 +91,31 @@
 .whatsapp-float{position:fixed;right:20px;bottom:20px;z-index:8;display:inline-flex;align-items:center;gap:9px;background:rgba(23,63,58,.9);color:#fff;padding:13px 17px;border:1px solid rgba(255,255,255,.27);border-radius:999px;font-size:12px;font-weight:700;box-shadow:0 14px 32px rgba(23,63,58,.25);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
 .whatsapp-float span{color:#f0ad98}
 
+/* Scroll choreography: content stays fully visible if JavaScript is unavailable. */
+.motion-ready [data-reveal],.motion-ready [data-reveal-item]{opacity:0;transform:translateY(24px);transition:opacity .72s ease,transform .72s cubic-bezier(.22,1,.36,1);transition-delay:var(--reveal-delay,0ms)}
+.motion-ready [data-reveal-item]{transform:translateY(18px)}
+.motion-ready [data-reveal].is-visible,.motion-ready [data-reveal-item].is-visible{opacity:1;transform:translateY(0)}
+.motion-ready .hero-copy>*{opacity:0;transform:translateY(16px);transition:opacity .72s ease,transform .72s cubic-bezier(.22,1,.36,1)}
+.motion-ready .hero-copy>*:nth-child(1){transition-delay:80ms}.motion-ready .hero-copy>*:nth-child(2){transition-delay:150ms}.motion-ready .hero-copy>*:nth-child(3){transition-delay:220ms}.motion-ready .hero-copy>*:nth-child(4){transition-delay:290ms}.motion-ready .hero-copy>*:nth-child(5){transition-delay:360ms}
+.motion-ready .hero.is-ready .hero-copy>*{opacity:1;transform:translateY(0)}
+.motion-ready .hero.is-ready .hero-visual{animation:hero-float 7s ease-in-out infinite,hero-enter .9s cubic-bezier(.22,1,.36,1) both}
+.whatsapp-float.is-attention{animation:whatsapp-pulse 1.25s ease-in-out}
+
+.lightbox{display:grid;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .28s ease,visibility .28s ease}
+.lightbox.open{display:grid;opacity:1;visibility:visible;pointer-events:auto}
+.lightbox img{transform:scale(.96);transition:transform .34s cubic-bezier(.22,1,.36,1)}
+.lightbox.open img{transform:scale(1)}
+
+@keyframes hero-enter{from{opacity:0;transform:translateY(22px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes whatsapp-pulse{0%,100%{transform:scale(1);box-shadow:0 14px 32px rgba(23,63,58,.25)}45%{transform:scale(1.045);box-shadow:0 18px 44px rgba(221,118,95,.34)}}
+
 @keyframes hero-float{50%{transform:translateY(-8px)}}
 @keyframes hero-drift{from{transform:scale(1.02) translate3d(-.5%,0,0)}to{transform:scale(1.08) translate3d(.8%,-1%,0)}}
 @keyframes gallery-drift{from{transform:scale(1.02) translate3d(-.4%,0,0)}to{transform:scale(1.08) translate3d(.7%,-.8%,0)}}
 
 @media (prefers-reduced-motion:reduce){
-  .hero-visual,.hero-visual img,.gallery-item img{animation:none}
-  .nav-cta,.button-dark{transition:none}
+  .hero-visual,.hero-visual img,.gallery-item img,.whatsapp-float{animation:none}
+  .nav-cta,.button-dark,.site-header,.lightbox,.lightbox img{transition:none}
 }
 
 @media(max-width:760px){
@@ -98,4 +123,5 @@
   .hero-visual{box-shadow:0 20px 42px rgba(23,63,58,.13)}
   .gallery-item span{left:8px;bottom:8px;padding:6px 9px;font-size:11px}
   .guest-fit-section,.stay-guide-section{padding-top:76px;padding-bottom:76px}.guest-fit-heading,.stay-guide-section,.reviews-panel{grid-template-columns:1fr;gap:32px}.guest-fit-heading h2,.stay-guide-copy h2,.reviews-panel h2{font-size:38px}.guest-fit-grid,.stay-guide-grid{grid-template-columns:1fr;gap:10px;margin-top:32px}.stay-guide-copy,.stay-guide-grid{padding-left:28px;padding-right:28px}.stay-guide-grid article{min-height:auto}.reviews-section{padding-top:76px}.reviews-panel{padding:42px 28px;border-radius:16px}.review-score{justify-self:start}.review-score strong{font-size:62px}.whatsapp-float{right:14px;bottom:14px}
+  .site-header.is-scrolled{height:64px}.nav-links a:not(.nav-cta):after{display:none}
 }
